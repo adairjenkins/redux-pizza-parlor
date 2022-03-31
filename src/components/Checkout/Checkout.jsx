@@ -7,10 +7,20 @@ function Checkout() {
     //clear the items from the cart
     //nav back to database
 
-    const array = useSelector(store => store.orderReducer);
-    const order = array[0]
+    const orderArray = useSelector(store => store.orderReducer);
+    const order = orderArray[0]
 
-    axios.post('/')
+    const handleCheckout = () => {
+
+        axios.post('/api/order', {order})
+        .then(response => {
+            //get
+        })
+        .catch(error => {
+            console.log('error in post', error);
+        })
+
+    }
 
     //POST OBJECT WILL LOOK LIKE THIS: 
     // {
@@ -49,12 +59,14 @@ function Checkout() {
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
+                        {order.pizzas.map((pizza) => {
+                            return(<td key={pizza.id}>{pizza.name}</td>)
+                        })}          
                     </tr>
                     </tbody>
                 </table>
             </div>
+
         </>
     )
 }
