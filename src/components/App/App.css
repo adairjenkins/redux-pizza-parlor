@@ -13,3 +13,14 @@
 .App-title {
   font-size: 2em;
 }
+
+.menuItems {
+  display: inline;
+  margin: 20px;
+  padding: 20px;
+}
+
+.image {
+  height: 30%;
+  width: 30%;
+}

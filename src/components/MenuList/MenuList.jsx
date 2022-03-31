@@ -1,12 +1,25 @@
 import MenuItems from "../MenuItems/MenuItems";
+import {useSelector} from 'react-redux';
 
-function MenuList () {
+function MenuList({ getPizzas }) {
+
+    const menuReducer = useSelector(store => store.menuReducer)
 
     return (
         <>
-            <p>Menu List goes here:</p>
-            {/* Map through the pizza array */}
-            <MenuItems />
+            <div>
+                {/* <p>Menu List goes here:</p> */}
+                {/* Map through the pizza array */}
+                {menuReducer.map((pizza) => {
+                    return (
+                        <MenuItems
+                            key={pizza.id}
+                            getPizzas={getPizzas}
+                            pizza={pizza}
+                        />
+                    );
+                })}
+            </div>
         </>
     )
 }

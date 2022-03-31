@@ -45,7 +45,9 @@ function App() {
 
       <Route path='/menu'>
         {/* Step 1: Select your Pizza */}
-        <MenuList />
+        <MenuList 
+        getPizzas={getPizzas}
+        />
       </Route>
 
       <Route path='/form'>
