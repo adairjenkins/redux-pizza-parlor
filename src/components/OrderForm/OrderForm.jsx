@@ -11,21 +11,24 @@ function OrderForm() {
     const [newAddress, setNewAddress] = useState('');
     const [newCity, setNewCity] = useState('');
     const [newZip, setNewZip] = useState('');
-    const [newType, setNewType] =useState('');
+    const [newType, setNewType] = useState('');
 
 
 
     const handleSubmit = () => {
-        console.log('clicked into handleSubmit!');
+        console.log('clicked into handleSubmit!', newName, newAddress, newCity, newZip, newType);
         event.preventDefault();
 
         dispatch({
             type: 'ADD_ORDER',
 
-            payload: newName,
-            newAddress,
-            newCity,
-            newZip
+            payload: {
+                customer_name: newName,
+                street_address: newAddress,
+                city: newCity,
+                zip: newZip,
+                type: newType
+            }
 
         });
         setNewName('');
@@ -59,15 +62,14 @@ function OrderForm() {
                     onChange={event => setNewZip(event.target.value)} />
 
                 <input id='pickup' name='deliveryType' type="radio" value='pickup'
-                    checked={type === 'Pickup'}
                     onChange={event => setNewType(event.target.value)} />
                 <label htmlFor='pickup' pickup>Pickup</label>
 
                 <input id='delivery' name='deliveryType' type="radio" value='delivery'
-                    checked={type === 'Delivery'}
                     onChange={event => setNewType(event.target.value)} />
                 <label htmlFor='delivery'>Delivery</label>
 
+                
                 <button onClick={handleSubmit}>Next</button>
 
             </form>
