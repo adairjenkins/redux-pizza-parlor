@@ -1,20 +1,38 @@
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-function Checkout() {
+function Checkout({getPizzas}) {
     //will need post route to database. 
     //alert to confirm
     //clear the items from the cart
     //nav back to database
 
     const orderArray = useSelector(store => store.orderReducer);
-    const order = orderArray[0]
+    const currentOrder = orderArray[0]
+
+    const order =  {
+        "customer_name": "Donatello",
+        "street_address": "20 W 34th St",
+        "city": "New York",
+        "zip": "10001",
+        "total": "27.98",
+        "type": "Pickup",
+        "pizzas": [{
+          "id": "1",
+          "quantity": "1"
+        },{
+          "id": "2",
+          "quantity": "1"
+        }]
+      }
 
     const handleCheckout = () => {
 
+        console.log('CHECK ME OUT')
+
         axios.post('/api/order', {order})
         .then(response => {
-            //get
+            getPizzas();
         })
         .catch(error => {
             console.log('error in post', error);
@@ -22,32 +40,15 @@ function Checkout() {
 
     }
 
-    //POST OBJECT WILL LOOK LIKE THIS: 
-    // {
-    //     "customer_name": "Donatello",
-    //     "street_address": "20 W 34th St",
-    //     "city": "New York",
-    //     "zip": "10001",
-    //     "total": "27.98",
-    //     "type": "Pickup",
-    //     "pizzas": [{
-    //       "id": "1",
-    //       "quantity": "1"
-    //     },{
-    //       "id": "2",
-    //       "quantity": "1"
-    //     }]
-    //   }
-
     return (
         <>
             <div align="left">
                 <h3>Step 3: Checkout</h3>
             </div>
             <div align="left">
-                <p>{order.customer_name}</p>
-                <p>{order.street_address}</p>
-                <p>{order.city} <span>  {order.zip}</span></p>
+                <p>{currentOrder.customer_name}</p>
+                <p>{currentOrder.street_address}</p>
+                <p>{currentOrder.city} <span>  {currentOrder.zip}</span></p>
             </div>
             <div>
                 <table>
@@ -58,15 +59,17 @@ function Checkout() {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        {order.pizzas.map((pizza) => {
-                            return(<td key={pizza.id}>{pizza.name}</td>)
-                        })}          
-                    </tr>
+                        {currentOrder.pizzas.map((pizza) => {
+                            return(<tr key={pizza.id}>
+                                <td>{pizza.name}</td>
+                                <td>{pizza.price}</td>
+                                </tr>)})}          
                     </tbody>
                 </table>
             </div>
-
+            <div>
+                <button onClick={handleCheckout}>CHECKOUT</button>
+            </div>
         </>
     )
 }
