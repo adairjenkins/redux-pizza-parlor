@@ -29,7 +29,7 @@ const orderReducer = (state = order, action) => {
             return state.pizzas.filter((pizza) => pizza.id !== action.payload.id);
         
         case 'ADD_ORDER':
-            state.customer = action.payload.customer;
+            state.customer_name = action.payload.customer_name;
             state.street_address = action.payload.street_address;
             state.city = action.payload.city;
             state.zip = action.payload.zip;
