@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
+import { HashRouter as Router, Route, Link, useHistory } from 'react-router-dom';
 
 function OrderForm() {
 
     const dispatch = useDispatch();
     const orderReducer = useSelector(store => store.orderReducer)
+    const history = useHistory();
 
     const [newName, setNewName] = useState('');
     const [newAddress, setNewAddress] = useState('');
@@ -18,6 +20,8 @@ function OrderForm() {
     const handleSubmit = (event) => {
         console.log('clicked into handleSubmit!', newName, newAddress, newCity, newZip, newType);
         event.preventDefault();
+
+        history.push('/checkout');
 
         dispatch({
             type: 'ADD_ORDER',

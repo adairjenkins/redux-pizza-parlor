@@ -1,9 +1,15 @@
 import MenuItems from "../MenuItems/MenuItems";
 import {useSelector} from 'react-redux';
+import { useHistory } from 'react-router-dom'
 
 function MenuList({ getPizzas }) {
 
     const menuReducer = useSelector(store => store.menuReducer)
+    const history = useHistory();
+
+    const handleClick = () => {
+        history.push('/form');
+    }
 
     return (
         <>
@@ -20,8 +26,10 @@ function MenuList({ getPizzas }) {
                     );
                 })}
             </div>
+            <button onClick={handleClick}>Proceed....</button>
         </>
     )
 }
+
 
 export default MenuList;
