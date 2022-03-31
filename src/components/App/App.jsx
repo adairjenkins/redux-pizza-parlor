@@ -30,29 +30,35 @@ function App() {
 
   return (
     <Router>
+      <div className='App'>
+        < Header />
+
       <Route path='/'>
-        <div className='App'>
-          < Header />
-          <img src='images/pizza_photo.png' />
-          <p>Pizza is great.</p>
+
+        <nav>
+          <li><Link to='/menu'>View Menu</Link></li>
+          <li><Link to='/form'>Place Your Order</Link></li>
+          <li><Link to='/checkout'>Checkout</Link></li>
+        </nav>
+
       </Route>
 
       <Route path='/menu'>
-      {/* Step 1: Select your Pizza */}
-      <MenuList />
+        {/* Step 1: Select your Pizza */}
+        <MenuList />
       </Route>
 
-      <Route path='/form'>     
-      {/* Step 2: Customer Information */}
-      <OrderForm />
-      </Route> 
+      <Route path='/form'>
+        {/* Step 2: Customer Information */}
+        <OrderForm />
+      </Route>
 
       <Route path='/checkout'>
-      {/* Step 3: Checkout */}
-      <Checkout />
+        {/* Step 3: Checkout */}
+        <Checkout />
       </Route>
-      
-    </div>
+
+      </div>
     </Router >
   );
 }
