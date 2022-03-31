@@ -14,7 +14,7 @@ function MenuItems({ pizza }) {
     }
 
     const removeFromCart = () => {
-        console.log('remove from cart:', pizza.name, pizza.id);
+        console.log('remove from cart:', pizza.name);
         dispatch({type: 'REMOVE_PIZZA', payload: pizza})
     }
 
