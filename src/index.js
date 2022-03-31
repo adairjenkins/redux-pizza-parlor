@@ -23,6 +23,7 @@ const orderReducer = (state = order, action) => {
         
         case 'ADD_PIZZA':
             state.pizzas = [...state.pizzas, action.payload];
+            state.total = Number(action.payload.price) + Number(state.total);
             return state;
         
         case 'REMOVE_PIZZA':

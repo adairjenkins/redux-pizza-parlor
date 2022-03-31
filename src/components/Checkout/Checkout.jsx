@@ -7,14 +7,18 @@ function Checkout({getPizzas}) {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const orderArray = useSelector(store => store.orderReducer);
-    const currentOrder = orderArray[0]
+    const currentOrder = useSelector(store => store.orderReducer);
+    console.log('currentOrder', currentOrder)
+
+    let quantity = 1;
+    let total = 0;
 
     const calzoneToPizza = (pizzaArray) => {
         let pizzaData = []
         for (const pizza of pizzaArray) {
-           let details = {id: pizza.id, quantity: pizza.quantity}
+           let details = {id: pizza.id, quantity: quantity}
            pizzaData.push(details);
+           total += Number(pizza.price);
         }
         return pizzaData;
     }
@@ -26,7 +30,7 @@ function Checkout({getPizzas}) {
         street_address: currentOrder.street_address,
         city: currentOrder.city,
         zip: currentOrder.zip,
-        total: currentOrder.total,
+        total: total,
         type: currentOrder.type,
         pizzas: pizzas
       }
