@@ -8,7 +8,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const orderReducer = (state = testOrder, action) => {
+const orderReducer = (state = [], action) => {
     if (action.type === 'ADD_ORDER') {
         return [...state, action.payload]
     }
