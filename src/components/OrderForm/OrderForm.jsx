@@ -15,7 +15,7 @@ function OrderForm() {
 
 
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
         console.log('clicked into handleSubmit!', newName, newAddress, newCity, newZip, newType);
         event.preventDefault();
 
