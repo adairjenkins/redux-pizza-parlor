@@ -57,7 +57,9 @@ function App() {
 
       <Route path='/checkout'>
         {/* Step 3: Checkout */}
-        <Checkout />
+        <Checkout
+        getPizzas={getPizzas}
+        />
       </Route>
 
       </div>
