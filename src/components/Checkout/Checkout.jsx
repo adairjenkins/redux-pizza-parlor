@@ -1,47 +1,53 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom'
 
 function Checkout({getPizzas}) {
-    //will need post route to database. 
-    //alert to confirm
-    //clear the items from the cart
-    //nav back to database
+
+    const history = useHistory();
+    const dispatch = useDispatch();
 
     const orderArray = useSelector(store => store.orderReducer);
     const currentOrder = orderArray[0]
 
+    const pizza = 
+
     const order =  {
-        "customer_name": "Donatello",
-        "street_address": "20 W 34th St",
-        "city": "New York",
-        "zip": "10001",
-        "total": "27.98",
-        "type": "Pickup",
-        "pizzas": [{
-          "id": "1",
-          "quantity": "1"
-        },{
-          "id": "2",
-          "quantity": "1"
-        }]
+        customer_name: currentOrder.customer_name,
+        street_address: currentOrder.street_address,
+        city: currentOrder.city,
+        zip: currentOrder.zip,
+        total: currentOrder.total,
+        type: currentOrder.type,
+        pizzas: currentOrder.pizzas
       }
 
+    //   "customer_name": "currentOrder.customer_name",
+    //   "street_address": "currentOrder.street_address",
+    //   "city": "currentOrder.city",
+    //   "zip": "currentOrder.zip",
+    //   "total": "currentOrder.total",
+    //   "type": "currentOrder.type",
+    //   "pizzas": "currentOrder.pizzas"
+
     const handleCheckout = () => {
+        console.log('CHECK ME OUT', order);
 
-        console.log('CHECK ME OUT')
-
-        axios.post('/api/order', {order})
+        axios.post('/api/order', order)
         .then(response => {
             getPizzas();
+            history.push('/menu');
         })
         .catch(error => {
             console.log('error in post', error);
-        })
+        });
 
+        // dispatch({type: 'CLEAR_ORDER'});
     }
 
     return (
         <>
+        <div id="checkoutForm">
             <div align="left">
                 <h3>Step 3: Checkout</h3>
             </div>
@@ -70,6 +76,7 @@ function Checkout({getPizzas}) {
             <div>
                 <button onClick={handleCheckout}>CHECKOUT</button>
             </div>
+        </div>
         </>
     )
 }
