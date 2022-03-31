@@ -10,7 +10,16 @@ function Checkout({getPizzas}) {
     const orderArray = useSelector(store => store.orderReducer);
     const currentOrder = orderArray[0]
 
-    const pizza = 
+    const calzoneToPizza = (pizzaArray) => {
+        let pizzaData = []
+        for (const pizza of pizzaArray) {
+           let details = {id: pizza.id, quantity: pizza.quantity}
+           pizzaData.push(details);
+        }
+        return pizzaData;
+    }
+
+    let pizzas = calzoneToPizza(currentOrder.pizzas);
 
     const order =  {
         customer_name: currentOrder.customer_name,
@@ -19,7 +28,7 @@ function Checkout({getPizzas}) {
         zip: currentOrder.zip,
         total: currentOrder.total,
         type: currentOrder.type,
-        pizzas: currentOrder.pizzas
+        pizzas: pizzas
       }
 
     //   "customer_name": "currentOrder.customer_name",

@@ -15,7 +15,7 @@ const testOrder = [{
         zip: "10001",
         total: "27.98",
         type: "Pickup",
-        pizzas: [{id: "1", name: "Tomato Soup", price: "12.99"}]
+        pizzas: [{id: "1", name: "Tomato Soup", price: "12.99", quantity: "1"}]
     }]
 
 
