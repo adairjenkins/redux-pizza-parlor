@@ -36,6 +36,8 @@ const orderReducer = (state = order, action) => {
             state.zip = action.payload.zip;
             state.total = action.payload.total;
             state.type = action.payload.type;
+            
+            return state;
         
         default:
             return state;
