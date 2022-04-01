@@ -36,7 +36,11 @@ const orderReducer = (state = order, action) => {
             state.zip = action.payload.zip;
             state.total = action.payload.total;
             state.type = action.payload.type;
-            
+            return state;
+
+        case 'CLEAR_ORDER':
+            state = order
+            console.log('THIS IS THE ORDER YOU ARE LOOKING FOR:', order);
             return state;
         
         default:
