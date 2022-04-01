@@ -10,30 +10,6 @@ function Checkout({getPizzas}) {
     const currentOrder = useSelector(store => store.orderReducer);
     console.log('currentOrder', currentOrder)
 
-    let quantity = 1;
-    let total = 0;
-
-    const calzoneToPizza = (pizzaArray) => {
-        let pizzaData = []
-        for (const pizza of pizzaArray) {
-           let details = {id: pizza.id, quantity: quantity}
-           pizzaData.push(details);
-           total += Number(pizza.price);
-        }
-        return pizzaData;
-    }
-
-    let pizzas = calzoneToPizza(currentOrder.pizzas);
-
-    const order =  {
-        customer_name: currentOrder.customer_name,
-        street_address: currentOrder.street_address,
-        city: currentOrder.city,
-        zip: currentOrder.zip,
-        total: total,
-        type: currentOrder.type,
-        pizzas: pizzas
-      }
 
     //   "customer_name": "currentOrder.customer_name",
     //   "street_address": "currentOrder.street_address",
@@ -44,18 +20,27 @@ function Checkout({getPizzas}) {
     //   "pizzas": "currentOrder.pizzas"
 
     const handleCheckout = () => {
+
         console.log('CHECK ME OUT', order);
+        let text;
 
-        axios.post('/api/order', order)
-        .then(response => {
-            getPizzas();
-            history.push('/menu');
-        })
-        .catch(error => {
-            console.log('error in post', error);
-        });
+        if (confirm('Are you sure you want to checkout?') == true ){
+            text = 'Your order was submitted!'
 
-        // dispatch({type: 'CLEAR_ORDER'});
+            axios.post('/api/order', order)
+            .then(response => {
+                getPizzas();
+                history.push('/menu');
+            })
+            .catch(error => {
+                console.log('error in post', error);
+            });
+            
+        } else {
+            text = 'Your order has not been submitted.'
+        } 
+
+        dispatch({type: 'CLEAR_ORDER'});
     }
 
     return (
