@@ -74,7 +74,7 @@ function OrderForm() {
                 <label htmlFor='delivery'>Delivery</label>
 
                 
-                <button onClick={handleSubmit}>Next</button>
+                <button class="button add" onClick={handleSubmit}><span>Next</span></button>
 
             </form>
         </>
