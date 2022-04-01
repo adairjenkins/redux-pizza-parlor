@@ -11,7 +11,7 @@ VALUES ('Tomato Soup','If you like pizza, but you hate the toppings, the cheese,
 ('Onomatopizza','We start with a WHOMP of dough, SPLAT some marinara on it, PLOP enough cheese on there to make a mouse PEEP. Top it off with some SIZZLING bacon, and BOOM there it is! We guarantee you''ll SMACK your lips.',14.99,'images/onomatopizza.jpg'),
 ('Pepperoni','Classic pizza with cheese and pepperoni. Baked with a traditional crust in our brick oven.',14.99,'images/pepperoni.jpg'),
 ('Over the Rainbow','Taste the rainbow! One ingredient of each color: pepperoni, doritos, pineapple, olives, cheese, peppers and onion. Complimentary water served in a spray bottle to taste an actual rainbow.',19.99,'images/overTheRainbow.jpg'),
-('Chinese Firedragon','Pepperoni, pineapple and banana peppers.',15.99,'images/chineseFiredragon'),
+('Chinese Firedragon','Pepperoni, pineapple and banana peppers.',15.99,'images/chineseFiredragon.jpg'),
 ('Bad Date','Garlic, Onion and Pepperoni.',24.99,'images/badDate.jpg'),
 ('Another Little Pizza My Heart', 'Cheese Pizza. Personal size only.', 5.99,'images/anotherLittlePizzaMyHeart.jpg');
 
