@@ -26,7 +26,7 @@ function MenuList({ getPizzas }) {
                     );
                 })}
             </div>
-            <button onClick={handleClick}>Proceed....</button>
+            <button class="button proceed" onClick={handleClick}>Proceed....</button>
         </>
     )
 }

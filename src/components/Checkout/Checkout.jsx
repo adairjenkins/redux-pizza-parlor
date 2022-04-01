@@ -72,7 +72,7 @@ function Checkout({getPizzas}) {
                 </table>
             </div>
             <div>
-                <button onClick={handleCheckout}>CHECKOUT</button>
+                <button class="button add" onClick={handleCheckout}>CHECKOUT</button>
             </div>
         </div>
         </>

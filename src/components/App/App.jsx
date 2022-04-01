@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import MenuList from '../MenuList/MenuList';
 import Checkout from '../Checkout/Checkout';
 import OrderForm from '../OrderForm/OrderForm';
+import HomePage from '../HomePage';
 import { useDispatch } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
@@ -33,34 +34,53 @@ function App() {
       <div className='App'>
         < Header />
 
-      <Route path='/'>
+        <Route path='/' exact>
+        
+          <div id="navBox">
+            <nav>
+              <p><Link to='/menu' class="link">View Menu</Link></p>
+              <p><Link to='/form' class="link">Place Your Order</Link></p>
+              <p><Link to='/checkout' class="link">Checkout</Link></p>
+            </nav>
+            
+          </div>
+          <HomePage />
+  
+        </Route>
 
+        <Route path='/menu'>
+          {/* Step 1: Select your Pizza */}
+          <nav>
+              <p><Link to='/menu' class="link">View Menu</Link></p>
+              <p><Link to='/form' class="link">Place Your Order</Link></p>
+              <p><Link to='/checkout' class="link">Checkout</Link></p>
+            </nav>
+          <MenuList
+            getPizzas={getPizzas}
+          />
+        </Route>
+
+        <Route path='/form'>
         <nav>
-          <li><Link to='/menu'>View Menu</Link></li>
-          <li><Link to='/form'>Place Your Order</Link></li>
-          <li><Link to='/checkout'>Checkout</Link></li>
-        </nav>
+              <p><Link to='/menu' class="link">View Menu</Link></p>
+              <p><Link to='/form' class="link">Place Your Order</Link></p>
+              <p><Link to='/checkout' class="link">Checkout</Link></p>
+            </nav>
+          {/* Step 2: Customer Information */}
+          <OrderForm />
+        </Route>
 
-      </Route>
-
-      <Route path='/menu'>
-        {/* Step 1: Select your Pizza */}
-        <MenuList 
-        getPizzas={getPizzas}
-        />
-      </Route>
-
-      <Route path='/form'>
-        {/* Step 2: Customer Information */}
-        <OrderForm />
-      </Route>
-
-      <Route path='/checkout'>
-        {/* Step 3: Checkout */}
-        <Checkout
-        getPizzas={getPizzas}
-        />
-      </Route>
+        <Route path='/checkout'>
+        <nav>
+              <p><Link to='/menu' class="link">View Menu</Link></p>
+              <p><Link to='/form' class="link">Place Your Order</Link></p>
+              <p><Link to='/checkout' class="link">Checkout</Link></p>
+            </nav>
+          {/* Step 3: Checkout */}
+          <Checkout
+            getPizzas={getPizzas}
+          />
+        </Route>
 
       </div>
     </Router >
