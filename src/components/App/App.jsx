@@ -35,47 +35,57 @@ function App() {
         < Header />
 
         <Route path='/' exact>
-        
+
           <div id="navBox">
             <nav>
               <p><Link to='/menu' class="link">View Menu</Link></p>
               <p><Link to='/form' class="link">Place Your Order</Link></p>
               <p><Link to='/checkout' class="link">Checkout</Link></p>
             </nav>
-            
+
           </div>
           <HomePage />
-  
+
         </Route>
 
         <Route path='/menu'>
           {/* Step 1: Select your Pizza */}
-          <nav>
+
+          <div id="navBox">
+            <nav>
               <p><Link to='/menu' class="link">View Menu</Link></p>
               <p><Link to='/form' class="link">Place Your Order</Link></p>
               <p><Link to='/checkout' class="link">Checkout</Link></p>
             </nav>
+
+          </div>
           <MenuList
             getPizzas={getPizzas}
           />
         </Route>
 
         <Route path='/form'>
-        <nav>
+          <div id="navBox">
+            <nav>
               <p><Link to='/menu' class="link">View Menu</Link></p>
               <p><Link to='/form' class="link">Place Your Order</Link></p>
               <p><Link to='/checkout' class="link">Checkout</Link></p>
             </nav>
+
+          </div>
           {/* Step 2: Customer Information */}
           <OrderForm />
         </Route>
 
         <Route path='/checkout'>
-        <nav>
+          <div id="navBox">
+            <nav>
               <p><Link to='/menu' class="link">View Menu</Link></p>
               <p><Link to='/form' class="link">Place Your Order</Link></p>
               <p><Link to='/checkout' class="link">Checkout</Link></p>
             </nav>
+
+          </div>
           {/* Step 3: Checkout */}
           <Checkout
             getPizzas={getPizzas}
